@@ -10,11 +10,18 @@
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:once": "CI=true npm run test",
     "eject": "react-scripts eject",
     "build": "NODE_ENV=production babel  --presets minify --presets @babel/env --plugins @babel/plugin-proposal-export-default-from src/lib --out-dir dist --ignore __tests__,spec.js,test.js,__snapshots__",
     "lint": "eslint src/**/*.js",
+    "prettycheck": "prettier --check src/**/*.js",
     "prettify": "prettier --write src/**/*.js"
   },
+  "pre-commit": [
+    "prettycheck",
+    "lint",
+    "test:once"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
@@ -23,6 +30,7 @@
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-babel": "^5.3.0",
+    "pre-commit": "^1.2.2",
     "prettier": "1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
