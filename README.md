@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-logic-switch
 
-## Available Scripts
+[![Travis][build-badge]][build]
+[![npm package][npm-badge]][npm]
+[![Coveralls][coveralls-badge]][coveralls]
 
-In the project directory, you can run:
+A React component that lets you do conditional rendering, declaratively.
 
-### `yarn start`
+## Quick start
+```
+npm install --save react-logic-switch
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+import { Switch, Case, Default } from 'react-logic-switch';
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+function MySwitchComponent({ isNightTime }) {
+  return (
+    <Switch arg={isNightTime}>
+      <Case match={true}>
+        <DarkModePage />
+      </Case>
+      <Default>
+        <LightModePage />
+      </Default>
+    </Switch>
+  );
+}
+```
 
-### `yarn test`
+## Usage guide
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`react-logic-switch` exports three React components: `Switch`, `Case` and `Default`. Any meaningful usage will require all 3 components.
 
-### `yarn build`
+### `Switch`
+`Switch` is the top-level React component. It only accepts `Case` components, and exactly one `Default` component, as children. It also takes an `arg` prop, which can be used to decide which `Case` to render.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Case`
+The `Case` component takes exactly one of either the `test` or `match` prop. These are used by the `Switch` parent to decide which component to render.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- `match` - If you pass a `match` prop, the parent `Switch` will render if it's the first `Case` component with a match value equal to the parent `Switch` component's `arg` prop.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `test` - If you pass a function as a `test` prop, the parent `Switch` will call the function and use the output to decide whether to render the switch.
 
-### `yarn eject`
+```
+<Switch arg={friends}>
+  <Case test={friends => friends.length > 3}>
+    Chat with your friends!
+  </Case>
+  <Default>
+    Connect with your friends!
+  </Default>
+</Switch>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If a `Switch` receives more than one matching `Case`, only the first one will be rendered.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Default`
+The `Switch` component will render the contents of the `Default` component if no `Case` children match.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
+[build]: https://travis-ci.org/user/repo
 
-## Learn More
+[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
+[npm]: https://www.npmjs.org/package/npm-package
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
+[coveralls]: https://coveralls.io/github/user/repo
