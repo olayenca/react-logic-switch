@@ -1,1 +1,1 @@
-{ "extends": "react-app", "plugins": ["babel"] }
+{ "extends": ["react-app", "prettier"], "plugins": ["babel"] }
