@@ -1,1 +1,0 @@
-"use strict";var _propTypes=_interopRequireDefault(require("prop-types"));Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=Default;function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function Default(a){var b=a.children;return b}Default.propTypes={children:_propTypes.default.node},Default.isDefaultComponent=!0;
