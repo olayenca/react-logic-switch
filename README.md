@@ -1,8 +1,6 @@
 # react-logic-switch
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
 A React component that lets you do conditional rendering, declaratively.
 
@@ -59,11 +57,6 @@ If a `Switch` receives more than one matching `Case`, only the first one will be
 The `Switch` component will render the contents of the `Default` component if no `Case` children match.
 
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
 [npm]: https://www.npmjs.org/package/npm-package
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
