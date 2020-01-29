@@ -1,3 +1,4 @@
+/* Copyright 2020 Elsevier */
 module.exports = {
   env: {
     mocha: true,

@@ -41,3 +41,5 @@ Pull requests will only be considered for review if all the tests pass with 100%
 - `npm run build` will build the component for publishing to npm and also bundle the demo app.
 
 - `npm run clean` will delete built resources.
+
+<sup><sub>Copyright 2020 Elsevier</sub></sup>
