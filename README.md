@@ -60,3 +60,4 @@ The `Switch` component will render the contents of the `Default` component if no
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
 [npm]: https://www.npmjs.org/package/npm-package
 
+<sup><sub>Copyright 2020 Elsevier</sub></sup>

@@ -1,3 +1,4 @@
+/* Copyright 2020 Elsevier */
 import React, { useState } from 'react';
 import { render } from "react-dom";
 import { Switch, Case, Default } from './lib';

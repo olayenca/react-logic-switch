@@ -1,3 +1,4 @@
+/* Copyright 2020 Elsevier */
 import React from 'react';
 import { renderToStaticMarkup as render } from 'react-dom/server';
 import expect from 'expect';

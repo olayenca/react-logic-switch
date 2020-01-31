@@ -1,3 +1,4 @@
+/* Copyright 2020 Elsevier */
 import PropTypes from 'prop-types';
 
 export default function Case({ children }) {
