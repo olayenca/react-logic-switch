@@ -1,0 +1,22 @@
+language: node_js
+os: linux
+node_js:
+  - "10"
+  - "9"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
+
+script: echo "Running jobs install then tests against $(node -v) ..."
+
+jobs:
+  include:
+    - stage: npm install
+      script: echo "Installing needed modules"
+        - npm install
+    - stage: npm test
+      script: echo "Testing branch - $(branch) ..."
+        - npm test
+
