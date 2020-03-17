@@ -5,18 +5,17 @@ node_js:
   - "9"
   - "8"
   - "7"
-  - "6"
-  - "5"
-  - "4"
 
 script: echo "Running jobs install then tests against $(node -v) ..."
 
 jobs:
   include:
     - stage: npm install
-      script: echo "Installing needed modules"
+      script:
+        - echo "Installing needed modules"
         - npm install
     - stage: npm test
-      script: echo "Testing branch - $(branch) ..."
+      script:
+        - echo "Testing branch - $(branch) ..."
         - npm test
 
