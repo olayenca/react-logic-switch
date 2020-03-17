@@ -11,8 +11,13 @@ jobs:
       script:
         - echo "Installing needed modules"
         - npm install
+    - stage: npm build
+      script:
+        - echo "Running build script ..."
+        - npm run-script build
     - stage: npm test
       script:
         - echo "Testing branch - $(branch) ..."
         - npm test
+
 
