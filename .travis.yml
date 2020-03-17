@@ -2,7 +2,6 @@ language: node_js
 os: linux
 node_js:
   - "9"
-  - "8"
 
 script: echo "Running jobs install then tests against $(node -v) ..."
 
