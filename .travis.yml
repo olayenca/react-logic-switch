@@ -14,11 +14,12 @@ jobs:
         - echo "Running build script ..."
         - npm run-script build
     - stage: Test
-#      if: branch != master
       script:
         - echo "Testing branch - $(branch) ..."
         - npm test
-      after_success:
+    - stage: Merge to master
+      if: type = pull_request
+      script:
         - chmod +x ./merge_script.sh
 env:
   global:
