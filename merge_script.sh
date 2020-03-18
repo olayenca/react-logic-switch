@@ -9,7 +9,7 @@ git fetch --all || exit
 
 printf '\nb2>>>>>>>>>>>>>> '
 git checkout master || exit
-git merge --squash --no-ff "$TRAVIS_COMMIT" || exit
+git merge --no-ff "$TRAVIS_COMMIT" || exit
 
 printf '3>>>>>>>>>\n'
 git push -u https://${GITHUB_SECRET_TOKEN}@github.com/olayenca/react-logic-switch.git
