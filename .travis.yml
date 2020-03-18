@@ -20,7 +20,7 @@ jobs:
     - stage: Merge to master
       if: (type = pull_request)
       script:
-        - echo "Running github auto merge process ..."
+        - echo "Running github auto merge process for:" $TRAVIS_COMMIT
         - bash ./merge_script.sh
 env:
   global:
