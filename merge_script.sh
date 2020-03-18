@@ -12,5 +12,7 @@ git checkout master || exit
 git merge --no-ff "origin/$TRAVIS_PULL_REQUEST_BRANCH" || exit
 
 printf '3>>>>>>>>>\n'
-git push https://github.com/${GITHUB_NAME}/react-logic-switch.git master
+git push https://${GITHUB_SECRET_TOKEN}@github.com/${GITHUB_NAME}/react-logic-switch.git master
+Username: GITHUB_NAME
+Password: GITHUB_PASSWORD
 printf '4>>>>>>>>>>>>n'
