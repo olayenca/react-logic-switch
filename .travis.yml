@@ -15,12 +15,12 @@ jobs:
     - npm run-script build
   - stage: Test
     script:
-    - echo "Testing branch - $(branch) ..."
+    - echo "Testing branch:" $TRAVIS_PULL_REQUEST_BRANCH
     - npm test
   - stage: Merge to master
     if: "(type = pull_request)"
     script:
-    - echo "Running github auto merge process for:" $TRAVIS_COMMIT
+    - echo "Running github auto merge process for:" $TRAVIS_PULL_REQUEST_BRANCH
     - bash ./merge_script.sh
 env:
   global:
