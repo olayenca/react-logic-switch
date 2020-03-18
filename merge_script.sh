@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
-export GIT_COMMITTER_EMAIL=DEPLOY_EMAIL
-export GIT_COMMITTER_NAME='olayenca'
-export GIT_COMMITTER_PASSWORD=GIT_PASS
+export GIT_COMMITTER_EMAIL=GITHUB_EMAIL
+export GIT_COMMITTER_NAME=GITHUB_NAME
 
 printf '1>>>>>>>>>>>>>.\n'
 git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* || exit
