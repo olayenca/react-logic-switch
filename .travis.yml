@@ -20,6 +20,7 @@ jobs:
     - stage: Merge to master
       if: (type = pull_request)
       script:
+        - echo "Running github auto merge process ..."
         - chmod +x ./merge_script.sh
 env:
   global:
