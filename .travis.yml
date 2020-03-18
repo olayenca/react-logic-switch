@@ -1,26 +1,25 @@
 language: node_js
 os: linux
 node_js:
-  - "9"
-
+- '9'
 script: echo "Running jobs install then tests against $(node -v) ..."
-
 jobs:
   include:
-    - stage: npm install
-      script:
-        - echo "Installing needed modules"
-        - npm install
-    - stage: npm build
-      script:
-        - echo "Running build script ..."
-        - npm run-script build
-    - stage: npm test
-      script:
-        - echo "Testing branch - $(branch) ..."
-        - npm test
-      if: branch != master
-      after_success:
-      secure: "UJ082P1sVVwhKYDGaB4rDQR7huMEcdx9CCqIaip0faKyuO4LJWAOqqVctacD4Cfq0WLj9CNrCA6pnE/95PgWdonK8mNHVy0vYxuSwa/Ck5KbkSN4KcU76dD6F3JEL5Gr9bzYuBKiRBHWHxqPVbk2XCxBCbT8OBaTwsCenyvzhdyYFV/ahkRwLh9qjbbpaBJ/9Pvy4BmQctuIoeMKpS0oZU9nUNPtnq7s4/nIDyKoIyKbyD1pVM8RtPXeqzXx+KcQut+YN7qaVwltepTOqU3bhkL1uCDKFnvVdgVOZKOkUWypmv/Hi/ZnnUUW650DVSvnRI240jaqnavE2+e00nePAfIWx89+q+0Eu/j6SsHS+RHQ8qKQmp4uksjzY4u8F77yChfBP//1TYtMwIX3VLQnkSKyRuBeztpKoqlFpoFEzqY7fTAYFgUx/aL0teusf18RxqEI1N4/LP3LihFo5jGGazxV7GfgECnx1Y01NZVByy4Ke2imBBq75W9ddjqZBfL14ejKdVhEoNiv0DWkHs3yBj2ZP73XiKy9p1RtR1QzldN61ajsHBgbNs/wKsSiUOtWPugXGlYPP0lPqPYYjnNqVayRPBwMn5vA53tKD+mas4cgYJezwauKGQx9hVrD551CCxIZkbId+aAHs5coEldoi0yWY9Yp1tvWyV0yw2hBzyI="
-        - ./merge_script.sh
-
+  - stage: npm install
+    script:
+    - echo "Installing needed modules"
+    - npm install
+  - stage: npm build
+    script:
+    - echo "Running build script ..."
+    - npm run-script build
+  - stage: npm test
+    script:
+    - echo "Testing branch - $(branch) ..."
+    - npm test
+    if: branch != master
+    after_success:
+    - "./merge_script.sh"
+env:
+  global:
+    secure: UReQz93h/R1uEmkgEIk4oTfbasaxv4f9VRk7H4VWbszaLAAK93+PVdQN7eOjH/68aXybxhFDX4HwQagrFqENT9m/fJyMR3U9FtSBTscN2f85UxskFZWHigBQiPH+E9o2ShzhxrqnEDQUZFUH6dm3twAKA4N3rNMTHEqB68/RDiyrjNcPiZm0+1weBNgnb+O5tOY20s+2jcC15mjtuJ5nVpk2g96WtDj9ZAwaxQ2E5iK7cwzOc3zzbmlWqOvHuUxuCmdzXYHgdoJ8F05uQDk4jAzrNLfQ1bWDHWAx+F0L0Rkn5ZzS30xgEiC+i4LhqRmejuKDgs7wrhxPRNn3SXU+b0a0hCJ3uV9f4uIV92mteuW9hvWNMTf7fQLFqtfdH0GkQakynUxxem5O0QsamZpAUmBIvY7QoK6HRrZi85adX8UcF2oxbnjCnotf/XayfggQJXCA8fX0a1MN+LAgeJ0SZRbmz5RYLth6FFCzRJOLs7B1x9SHOm/cc3KYC5zCELXQvAbN9B8OJYt7cZ+AFXT36rp5OZGQXRxE+ylu9zOA0vEPIyc0zMRyMKA0oGLsbuffMBgzJDPkdaunFA1L11sJMyk88ozB4XSBmP424jGVa82nrIpc+XhILB0L1PUHmcxXSyhj4qPcx/eou/KXfGTQSK1yn7ADwTqudxLw5R6817A=
