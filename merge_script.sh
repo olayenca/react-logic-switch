@@ -9,8 +9,8 @@ git fetch --all || exit
 
 printf '\nb2>>>>>>>>>>>>>> '
 git checkout master || exit
-git merge "$TRAVIS_COMMIT" || exit
+git merge --no-ff "$TRAVIS_PULL_REQUEST_BRANCH" || exit
 
 printf '3>>>>>>>>>\n'
-git push https://${GITHUB_SECRET_TOKEN}@github.com/${GITHUB_NAME}/react-logic-switch.git origin/master
+git push https://${GITHUB_SECRET_TOKEN}@github.com/${GITHUB_NAME}/react-logic-switch.git master
 printf '4>>>>>>>>>>>>n'
