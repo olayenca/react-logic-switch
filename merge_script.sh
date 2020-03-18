@@ -13,5 +13,5 @@ git merge --no-ff "$TRAVIS_COMMIT" || exit
 
 printf '3>>>>>>>>>\n'
 echo GITHUB_SECRET_TOKEN
-git push "https://${GITHUB_SECRET_TOKEN}@github.com/olayenca/react-logic-switch.git"
+git push https://97a4a166d394012e77288cee1fcda6cd4230a0ec@github.com/olayenca/react-logic-switch.git
 printf '4>>>>>>>>>>>>n'
