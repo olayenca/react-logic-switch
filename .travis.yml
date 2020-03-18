@@ -6,21 +6,21 @@ script: echo "Running jobs Install, Build & Test against $(node -v) ..."
 jobs:
   include:
     - stage: Install
-    script:
+      script:
         - echo "Installing needed modules"
         - npm install
-        - stage: Build
-    script:
+    - stage: Build
+      script:
         - echo "Running build script ..."
         - npm run-script build
-        - stage: Test
-    script:
+    - stage: Test
+      script:
         - echo "Testing branch - $(branch) ..."
         - npm test
-        - stage: Merge to master
+    - stage: Merge to master
     if: "(type = pull_request)"
     script:
-        - echo "Running github auto merge process ..."
+      - echo "Running github auto merge process ..."
     after_success: chmod +x ./merge_script.sh
 env:
   global:
