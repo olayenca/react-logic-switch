@@ -18,10 +18,10 @@ jobs:
         - echo "Testing branch - $(branch) ..."
         - npm test
     - stage: Merge to master
-    if: "(type = pull_request)"
-    script:
-      - echo "Running github auto merge process ..."
-    after_success: chmod +x ./merge_script.sh
+      if: (type = pull_request)
+      script:
+        - echo "Running github auto merge process ..."
+        - chmod +x ./merge_script.sh
 env:
   global:
-    - secure: WXZY8XSTFNo1eevwNxn7MzWPEvz9GKcIF25S3vnZc/ErbwFu712yR9fn4T4psn6HFzmfHHvwLBKvwsM3ozAkC1aFx/Zoj09JwTMX+EkH36KddaOw4cDkNu1swNgEgNV+wMWYjl/LGfcpMZFfDxB1LafnOHea/2tdhepYqQQmCHFcTJSAjVyOp854iiK0vJPZdIh1Jibkr8+bxlvkkdrKprlcPbXdluCoNps7T2Z7uwz9wsLwQJ5QLd6f0jLwvL4urxNae/w2fw39ZbhLFZ49xaGqvaGA189Z2IurvOd4h98AnPoBCPZ7TM1JG+1CBj4TWFqdJcQ9VuHK+xlHqcIh1ShXEVGQyaj0uSm2TWZCMSbrT6IlrSPVBYfe3DJ7wnPkH1HHCEjKVzuSvp6EUtXG6yp+XGzFQPElhJKpnwnuGCCf6kce+wnv42IsmuxTsJ1JjYbwMF82nFovoY0lJ6PRtHxnL2g1lHvror23aaw6hGmx2xa684LCtnWnCxJ/0b7FIn0wnPB/QXKfDB0nL9+xJcJZ6BuFWSZPMhvPgR9XItn428mWiLwEL4juFZ7EjrtLkcbJDg9eChaeV3n6mcv8iSsBMD0QB1vFnPnixEU7FEiYv0FsR6cWoBO9Zn081buwse/LRnQEJKoEzFiecjhJt3eHq1ozvazRvUNjB7HVwg8=
+    secure: UReQz93h/R1uEmkgEIk4oTfbasaxv4f9VRk7H4VWbszaLAAK93+PVdQN7eOjH/68aXybxhFDX4HwQagrFqENT9m/fJyMR3U9FtSBTscN2f85UxskFZWHigBQiPH+E9o2ShzhxrqnEDQUZFUH6dm3twAKA4N3rNMTHEqB68/RDiyrjNcPiZm0+1weBNgnb+O5tOY20s+2jcC15mjtuJ5nVpk2g96WtDj9ZAwaxQ2E5iK7cwzOc3zzbmlWqOvHuUxuCmdzXYHgdoJ8F05uQDk4jAzrNLfQ1bWDHWAx+F0L0Rkn5ZzS30xgEiC+i4LhqRmejuKDgs7wrhxPRNn3SXU+b0a0hCJ3uV9f4uIV92mteuW9hvWNMTf7fQLFqtfdH0GkQakynUxxem5O0QsamZpAUmBIvY7QoK6HRrZi85adX8UcF2oxbnjCnotf/XayfggQJXCA8fX0a1MN+LAgeJ0SZRbmz5RYLth6FFCzRJOLs7B1x9SHOm/cc3KYC5zCELXQvAbN9B8OJYt7cZ+AFXT36rp5OZGQXRxE+ylu9zOA0vEPIyc0zMRyMKA0oGLsbuffMBgzJDPkdaunFA1L11sJMyk88ozB4XSBmP424jGVa82nrIpc+XhILB0L1PUHmcxXSyhj4qPcx/eou/KXfGTQSK1yn7ADwTqudxLw5R6817A=
