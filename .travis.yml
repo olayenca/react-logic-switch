@@ -15,7 +15,7 @@ jobs:
     - npm run-script build
   - stage: Test
     script:
-    - echo "Testing branch:" $TRAVIS_PULL_REQUEST_BRANCH
+    - echo "Testing branch..." $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
     - npm test
   - stage: Merge to master
     if: "(type = pull_request)"
