@@ -1,18 +1,30 @@
 language: node_js
 os: linux
 node_js:
-  - "9"
-
-script: echo "Running jobs install then tests against $(node -v) ..."
-
+- '9'
+script: echo "Running jobs Install, Build & Test against $(node -v) ..."
 jobs:
   include:
-    - stage: npm install
-      script:
-        - echo "Installing needed modules"
-        - npm install
-    - stage: npm test
-      script:
-        - echo "Testing branch - $(branch) ..."
-        - npm test
-
+  - stage: Install
+    script:
+    - echo "Installing needed modules"
+    - npm install
+  - stage: Build
+    script:
+    - echo "Running build script ..."
+    - npm run-script build
+  - stage: Test
+    script:
+    - echo "Testing branch..." $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
+    - npm test
+  - stage: Merge to master
+    if: "(type = pull_request)"
+    script:
+    - echo "Running github auto merge process for:" $TRAVIS_PULL_REQUEST_BRANCH
+    - bash ./merge_script.sh
+env:
+  global:
+  - secure: UxXtpYg7C1qki/zf9+tJhDz7CplRphkC1SNe7KgrcvQMfDFsYyvoIyifTSulbIHszfJkUtMcjR2+uNhFpMF+YEHtMXpjF7f0Su0uiRPe9iOcNUX7uCtaTHIiEF2pQ/b0xhsLvs1rFvFWINbmnRBf9naorrft9qKHnYrQAZAJRr6QgDklIXQmizPNw/Qs5fUxbkMHaW0zA2WJL1q62g/Tl7K3bOc7kMOJf2EnmFZ5/VJ246txegnV5AYsRqrFGJrNF7WyhPVbPPm9mlgSk/UfsnVKWeHq7EqwbSispbc8HBiFtIJBOywGW6rgN/wP7JaonC0eNxfbiBr7ENYt69dro8BHU0N30pDkgW3e78keZnheci3iF+CYQ7wzPesrrO1+7EW9EFdhTPQGW6f4nbe/C2sb3igTP0NBxZPhIEeQpgYymcpi59u/rKMPqcHcNnQ0eta5KqF1fcCAIXxzRTcWEtl2YR9lOwJV267C/1jHVIJ5Nyswgd70ljq/mu+rY21qEHHyKt2EsmndqPSZMaR1R25oPvHsD6i/MbvChejTp80MxiD/8t9K+/IPa7Oex3JgLOpt499w8VNRKZy3ozVNcNpJu6YL6fbguw42fTjjVNVkgJtyUtqRCxoIT3Dm6nRBgsLoHqvV25GftMQeSYNB5JE4iTXtzX5w9lSGiybX4Nc=
+  - secure: AKpmhYmsy1aNn4zVpdyf0aWoP3GjksuwXrlGjFiE1pTxxVnQ/nqM2iv1tIif13IumwiA9/zA/q6KxSJTag7o5cuXvipYiljgxFKzzf7Qw3rLsbydpd5QkdCbEKTsDTSpMIhzSHPbwnY1O9MKXXf/gzR7i0Y5c4vOal52zQUyGefxuAtc+BOWcqrXd1V6o6OsW0DQuMqV9OvSvqf9blDE8cIDbJQKjiO+LH7kCn1as75LuP/YssZszlBQ+ZQaXjXPw2G1KqQUYc6v3no7FcSK21wQy40M7xvgchdV4r7pGYPTS/ETtkzzz+WfeTY31ZgcZeIIBZFOm3WhkZXt6/6inN5usHA44YzkbDr1f1syHTVomkq7w5DDrk8hVK04oaPu06EYptacPpycTtkMAGyWMfr7oHN6igyyWjlnGTKTW6qmFUa/cOACBTVK/vVWLx+SGh7H+RyU6VWYHG6fsLDdXwUajo4zVCJliSWEq7RyoAD6ATciis9N9ZHxNuHWscKUjDRX5cSQgWfkpHwEtnPVTypyYNoC3/N8E94mAaqDHx65Aek8u5xsTdr3IwFkuG5Fb0eS+lxL505ONhciMK5duJ16r+HUnMZfr6RHCNGm53ZVxXVvVvh0KiZElT9qCJwOWfWt2lRbFS81tWfjf8Od6PDqDyf1xpMpc3VSK6OtJ4U=
+  - secure: oEmfHBxw6uhVzAXhtsGpq661++M/k0Bes0/adBaXdUWbVNYjndWU+BMNEwsivg3a7oMwIzZ0D+1xn0KIOyIDjnZYS2dQRlma6KP/qumX2GxVtuysDlK5aZuvrNZ5IWpvLDs/KP6h12oK8a5SFdLpFW0um53s31MAVqiHYumT1nr9JSN0lQDJxmqB8HJawagoBaOP2AQqhN2d0Z7kdCUAsvbdAOURTd3lVjwRsiIdQVHdgK3jn9i5I1Z8fnF+EGb/jVMDAS+qr4cyXoW35ZLppBy0hZ2J71LkMXl+YQWi+JNHu9gzjrbo2uMfiryipy0YEiB0eug3Nyn9PYihHz+ZFJNCo0qfzoP5YmzceBqhOWCiO3OjqhlBVnE0SL8dNaSw1WhP8J7UHqDM3fTEJ89GPdQH5Ze8TMq4J8neFJO0u54LN28sHY9qlCojkKbMRzgTb+BALGp0328l32+ybyh/+S11auwAL9JTHeeNEqzoCpF3FC4SCovNnePqhdhRnZ1nQkZXe4pEOQivdK9EF+Uw5VgykZZ7fHupYvSkpxCi9eB5+ztZn6/6Kdt3AYQA13PDAMKC+SNA/VQK+9U5JeWFcA/Hlof7cqazABqhh+LO/ZbMNTRgGE39dzlTxttlI/+kQUqaY52F09mdsgVoVR7QA9+PGREgMJ4URBzFZyvWjp8=
+  - secure: o9goc3GFPlYTONLfYO9p2hjYCFMESZGlvyBkLNFgmqLlLa1/xcMj6d7qbC6AOQoviNjQ2pZxsJmCPtdapBo/ksfSrfEfXugfUZUEYbta25eZayaoQcdnDnPyHRxBYGgeNKcJuQtdr30TwTijnzxwFt7nvSAY4dduAZ+1TTZF+UEcYTU2BTdZz4Lxd3QWPzC3F9o3aC4UQDPjlcGl0u4kaqsw2+CYSZ9Sj+3DLNtopPuN/HN8zpR7Fg71HrYKKfNgHrYW2Nq8nn1pGBAFFlhN4rPzHcoIreHNHrYpajIEPyKvfZESERsl2nwmknb4EwhiOJYiKI0UwoI1PTFvGCS7RQpth71vFAUIeX8EfkxcR2ay36NFCJKK95UuNVX1OKMg2eKKs0KEhmv5MpWq6AXw8syi98ju9ss5f+Lrt9PWpMmKDqpcKqIbqDfxTS7KV+o1K/wt9OFEZlTNpSyxu33ieCfTQQekovoGV3PLTkdzNN5R6UO0mrnknpeopS0HuyxnmVyxiEMWRuMzDznJt6CuqWabhUzv7xX0sZJy7gPrPw0oY8m+u8XfakIyuQ9Tpylugf+DCNjW0CpDTNgG289MoFwD1UCQx+F+5+altGpAlp4o6wN4aGNwCfNHfX9H3hruOzWf85UXpzZ/HdFwS54L7GkF561HhaCnErkMruR554I=
