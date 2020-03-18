@@ -13,5 +13,5 @@ git checkout master || exit
 git merge --ff-only "$TRAVIS_COMMIT" || exit
 
 printf '3>>>>>>>>>\n'
-git push @github.com/">https://${GITHUB_TOKEN}@github.com/olayenca/react-logic-switch.git"
+git push https://${GITHUB_SECRET_TOKEN}@github.com/olayenca/react-logic-switch.git
 printf '4>>>>>>>>>>>>n'
