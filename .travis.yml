@@ -21,7 +21,6 @@ jobs:
         - npm test
       if: branch != master
       after_success:
-        - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
-        - "chmod a+x /tmp/travis-automerge"
-        - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=olayenca/react-logic-switch /tmp/travis-automerge"
+      secure: "UJ082P1sVVwhKYDGaB4rDQR7huMEcdx9CCqIaip0faKyuO4LJWAOqqVctacD4Cfq0WLj9CNrCA6pnE/95PgWdonK8mNHVy0vYxuSwa/Ck5KbkSN4KcU76dD6F3JEL5Gr9bzYuBKiRBHWHxqPVbk2XCxBCbT8OBaTwsCenyvzhdyYFV/ahkRwLh9qjbbpaBJ/9Pvy4BmQctuIoeMKpS0oZU9nUNPtnq7s4/nIDyKoIyKbyD1pVM8RtPXeqzXx+KcQut+YN7qaVwltepTOqU3bhkL1uCDKFnvVdgVOZKOkUWypmv/Hi/ZnnUUW650DVSvnRI240jaqnavE2+e00nePAfIWx89+q+0Eu/j6SsHS+RHQ8qKQmp4uksjzY4u8F77yChfBP//1TYtMwIX3VLQnkSKyRuBeztpKoqlFpoFEzqY7fTAYFgUx/aL0teusf18RxqEI1N4/LP3LihFo5jGGazxV7GfgECnx1Y01NZVByy4Ke2imBBq75W9ddjqZBfL14ejKdVhEoNiv0DWkHs3yBj2ZP73XiKy9p1RtR1QzldN61ajsHBgbNs/wKsSiUOtWPugXGlYPP0lPqPYYjnNqVayRPBwMn5vA53tKD+mas4cgYJezwauKGQx9hVrD551CCxIZkbId+aAHs5coEldoi0yWY9Yp1tvWyV0yw2hBzyI="
+        - ./merge_script.sh
 
