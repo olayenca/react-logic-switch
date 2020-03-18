@@ -2,6 +2,7 @@
 
 export GIT_COMMITTER_EMAIL="o.otuniyi@elsevier.com"
 export GIT_COMMITTER_NAME="olayenca"
+export GIT_COMMITTER_PASSWORD="eb1400b9ba1e9b6fb00ea4d457003a24ed8be5d6"
 
 printf '1>>>>>>>>>>>>>.\n'
 git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* || exit
@@ -13,5 +14,5 @@ git merge --no-ff "$TRAVIS_COMMIT" || exit
 
 printf '3>>>>>>>>>\n'
 echo GITHUB_SECRET_TOKEN
-git push https://97a4a166d394012e77288cee1fcda6cd4230a0ec@github.com/olayenca/react-logic-switch.git
+git push https://eb1400b9ba1e9b6fb00ea4d457003a24ed8be5d6@github.com/olayenca/react-logic-switch.git
 printf '4>>>>>>>>>>>>n'
