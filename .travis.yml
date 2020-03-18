@@ -3,19 +3,24 @@ os: linux
 node_js:
   - '9'
 script: echo "Running jobs Install, Build & Test against $(node -v) ..."
-stages:
-  - name: Install
-      - echo "Installing needed modules"
-      - npm install
-  - name: Build
-      - echo "Running build script ..."
-      - npm run-script build
-  - name: Test
-      - echo "Testing branch - $(branch) ..."
-      - npm test
-  - name: Merge
-    if: type = pull_request
-      - chmod +x ./merge_script.sh
+jobs:
+  include:
+    - stage: Install
+      script:
+        - echo "Installing needed modules"
+        - npm install
+    - stage: Build
+      script:
+        - echo "Running build script ..."
+        - npm run-script build
+    - stage: Test
+      script:
+        - echo "Testing branch - $(branch) ..."
+        - npm test
+    - stage: Merge to master
+      if: (type = pull_request)
+      script:
+        - chmod +x ./merge_script.sh
 env:
   global:
     secure: UReQz93h/R1uEmkgEIk4oTfbasaxv4f9VRk7H4VWbszaLAAK93+PVdQN7eOjH/68aXybxhFDX4HwQagrFqENT9m/fJyMR3U9FtSBTscN2f85UxskFZWHigBQiPH+E9o2ShzhxrqnEDQUZFUH6dm3twAKA4N3rNMTHEqB68/RDiyrjNcPiZm0+1weBNgnb+O5tOY20s+2jcC15mjtuJ5nVpk2g96WtDj9ZAwaxQ2E5iK7cwzOc3zzbmlWqOvHuUxuCmdzXYHgdoJ8F05uQDk4jAzrNLfQ1bWDHWAx+F0L0Rkn5ZzS30xgEiC+i4LhqRmejuKDgs7wrhxPRNn3SXU+b0a0hCJ3uV9f4uIV92mteuW9hvWNMTf7fQLFqtfdH0GkQakynUxxem5O0QsamZpAUmBIvY7QoK6HRrZi85adX8UcF2oxbnjCnotf/XayfggQJXCA8fX0a1MN+LAgeJ0SZRbmz5RYLth6FFCzRJOLs7B1x9SHOm/cc3KYC5zCELXQvAbN9B8OJYt7cZ+AFXT36rp5OZGQXRxE+ylu9zOA0vEPIyc0zMRyMKA0oGLsbuffMBgzJDPkdaunFA1L11sJMyk88ozB4XSBmP424jGVa82nrIpc+XhILB0L1PUHmcxXSyhj4qPcx/eou/KXfGTQSK1yn7ADwTqudxLw5R6817A=
