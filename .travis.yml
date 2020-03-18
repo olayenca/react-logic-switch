@@ -14,7 +14,7 @@ jobs:
         - echo "Running build script ..."
         - npm run-script build
     - stage: Test
-      if: branch != master
+#      if: branch != master
       script:
         - echo "Testing branch - $(branch) ..."
         - npm test
