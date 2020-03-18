@@ -1,7 +1,7 @@
 language: node_js
 os: linux
 node_js:
-- '9'
+  - '9'
 script: echo "Running jobs Install, Build & Test against $(node -v) ..."
 env:
   global:
@@ -10,19 +10,19 @@ jobs:
   include:
     - stage: Install
     script:
-    - echo "Installing needed modules"
-    - npm install
-    - stage: Build
+      - echo "Installing needed modules"
+      - npm install
+      - stage: Build
     script:
-    - echo "Running build script ..."
-    - npm run-script build
-    - stage: Test
+      - echo "Running build script ..."
+      - npm run-script build
+      - stage: Test
     script:
-    - echo "Testing branch - $(branch) ..."
-    - npm test
-    - stage: Merge to master
+      - echo "Testing branch - $(branch) ..."
+      - npm test
+      - stage: Merge to master
     if: "(type = pull_request)"
     script:
-    - echo "Running github auto merge process ..."
+      - echo "Running github auto merge process ..."
 
     after_success: chmod +x ./merge_script.sh
