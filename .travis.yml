@@ -15,14 +15,15 @@ jobs:
     - npm run-script build
   - stage: Test
     script:
-    - echo "Testing branch..." $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
+    - echo "Testing branch..." $TRAVIS_BRANCH
     - npm test
   - stage: Deploy
     branch:
       only: master
     if: "(type = push AND repo = elsevierlabs-os/react-logic-switch)"
     script:
-    - echo "Deploying to NPM:" $TRAVIS_PULL_REQUEST_BRANCH
+    - echo "Deploying to NPM:" $TRAVIS_BRANCH
+    - npm prerelease
     deploy:
       edge: true
       provider: npm
