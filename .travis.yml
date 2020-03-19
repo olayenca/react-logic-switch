@@ -20,7 +20,7 @@ jobs:
   - stage: Deploy
     branch:
       only: master
-    if: "(type = push)"
+    if: "(type = push AND repo = elsevierlabs-os/react-logic-switch)"
     script:
     - echo "Deploying to NPM:" $TRAVIS_PULL_REQUEST_BRANCH
     deploy:
