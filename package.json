@@ -1,6 +1,6 @@
 {
   "name": "react-logic-switch",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -16,7 +16,8 @@
     "build": "NODE_ENV=production babel --presets minify --presets @babel/env src/lib --out-dir dist --ignore __tests__,spec.js,test.js,__snapshots__",
     "lint": "eslint src/**/*.js",
     "prettycheck": "prettier --check src/**/*.js",
-    "prettify": "prettier --write src/**/*.js"
+    "prettify": "prettier --write src/**/*.js",
+    "prerelease": "yarn version --patch"
   },
   "pre-commit": [
     "prettycheck",
@@ -40,13 +41,11 @@
   },
   "peerDependencies": {
     "prop-types": ">=15.5.7",
-    "react": ">=15.0.0"
+    "react": ">=15.0.0",
+    "yarn": "^1.22.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/elsevierlabs-os/react-logic-switch.git"
-  },
-  "dependencies": {
-    "yarn": "^1.22.4"
   }
 }
