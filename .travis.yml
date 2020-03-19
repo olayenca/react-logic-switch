@@ -17,11 +17,6 @@ jobs:
     script:
     - echo "Testing branch..." $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
     - npm test
-  - stage: Merge to master
-    if: "(type = pull_request)"
-    script:
-    - echo "Running github auto merge process for:" $TRAVIS_PULL_REQUEST_BRANCH
-    - bash ./merge_script.sh
     deploy:
       edge: true
       provider: npm
