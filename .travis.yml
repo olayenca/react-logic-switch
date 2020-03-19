@@ -17,6 +17,10 @@ jobs:
     script:
     - echo "Testing branch..." $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
     - npm test
+  - stage: Deploy
+    if: [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]]
+    script:
+    - echo "Deploying to NPM:" $TRAVIS_PULL_REQUEST_BRANCH
     deploy:
       edge: true
       provider: npm
