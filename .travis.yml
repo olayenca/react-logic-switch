@@ -17,19 +17,6 @@ jobs:
     script:
     - echo "Testing branch..." $TRAVIS_BRANCH
     - npm test
-  - stage: Deploy
-    branch:
-      only: master
-    if: "(type = push AND repo = elsevierlabs-os/react-logic-switch)"
-    script:
-    - echo "Deploying to NPM:" $TRAVIS_BRANCH
-    - npm prerelease
-    deploy:
-      edge: true
-      provider: npm
-      email: "$NPM_EMAIL"
-      api_key: "$NPM_TOKEN"
-      cleanup: true
 env:
   global:
   - secure: UxXtpYg7C1qki/zf9+tJhDz7CplRphkC1SNe7KgrcvQMfDFsYyvoIyifTSulbIHszfJkUtMcjR2+uNhFpMF+YEHtMXpjF7f0Su0uiRPe9iOcNUX7uCtaTHIiEF2pQ/b0xhsLvs1rFvFWINbmnRBf9naorrft9qKHnYrQAZAJRr6QgDklIXQmizPNw/Qs5fUxbkMHaW0zA2WJL1q62g/Tl7K3bOc7kMOJf2EnmFZ5/VJ246txegnV5AYsRqrFGJrNF7WyhPVbPPm9mlgSk/UfsnVKWeHq7EqwbSispbc8HBiFtIJBOywGW6rgN/wP7JaonC0eNxfbiBr7ENYt69dro8BHU0N30pDkgW3e78keZnheci3iF+CYQ7wzPesrrO1+7EW9EFdhTPQGW6f4nbe/C2sb3igTP0NBxZPhIEeQpgYymcpi59u/rKMPqcHcNnQ0eta5KqF1fcCAIXxzRTcWEtl2YR9lOwJV267C/1jHVIJ5Nyswgd70ljq/mu+rY21qEHHyKt2EsmndqPSZMaR1R25oPvHsD6i/MbvChejTp80MxiD/8t9K+/IPa7Oex3JgLOpt499w8VNRKZy3ozVNcNpJu6YL6fbguw42fTjjVNVkgJtyUtqRCxoIT3Dm6nRBgsLoHqvV25GftMQeSYNB5JE4iTXtzX5w9lSGiybX4Nc=
